@@ -19,9 +19,9 @@ Python3.8+ with extra packages
 pip install -r requirements.txt
 ```
 
-## Run
+## Build GRR Roadmaps
 
-##### To build a GRR roadmap for a robot
+To build a GRR roadmap for a robot
 
 `python redundancy.py <robot_name> <rotation_type>`
 
@@ -33,8 +33,9 @@ For example,
 
 This builds the roadmap for Kinova robot with the task constraints only posed on position component, having the rotation component to be free.
 
+## Visualization and Interaction
 
-##### To visualize the results and interact with it
+To visualize the results and interact with the robot
 
 `python demo.py <robot_name> <rotation_type>`
 
