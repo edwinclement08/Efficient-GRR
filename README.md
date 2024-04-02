@@ -3,7 +3,7 @@
 A Python implementation of **Expansion-GRR**, a method for efficient generation of smooth global
 redundancy resolution roadmaps. A teleoperation pipeline utilizing the built roadmaps is also demonstrated in this package.
 
-<img align="left" src="demo/cyclic.gif" alt="drawing" width="500"/>
+<img src="demo/cyclic.gif" alt="drawing" width="500"/>
 
 ## Dependency
 
@@ -46,7 +46,7 @@ For example,
 
 This runs the visualization application to test the roadmaps result. You will teleoperate Kinova with the task space only defined with position component.
 
-<img align="left" src="demo/visualization.jpg" alt="drawing" width="500"/>
+<img src="demo/visualization.jpg" alt="drawing" width="500"/>
 
 When running the visualization application, you may:
 
