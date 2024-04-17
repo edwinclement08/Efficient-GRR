@@ -29,7 +29,7 @@ Here, `<robot_name>` is the name of the robot folder under **problems** folder, 
 
 For example,
 
-`python redundancy.py Kinova rot_free`
+`python redundancy.py kinova rot_free`
 
 This builds the roadmap for Kinova robot with the task constraints only posed on position component, having the rotation component to be free.
 
