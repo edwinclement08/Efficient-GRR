@@ -18,8 +18,8 @@ def build_cppmult(c):
     """Build the shared library for the sample C++ code"""
     print_banner("Building C++ Library")
     invoke.run(
-        "g++ -O3 -Wall -Werror -shared -std=c++11 -fPIC resolver.cpp "
-        "-o libresolver.so "
+        "g++ -O3 -Wall -Werror -shared -std=c++11 -fPIC graph_transfer.cpp "
+        "-o libgraph_transfer.so "
     )
     print("* Complete")
 
@@ -31,7 +31,7 @@ def compile_python_module(cpp_name, extension_name):
         "-I . "
         "{0} "
         "-o {1}`python3-config --extension-suffix` "
-        "-L. -lresolver -Wl,-rpath,.".format(cpp_name, extension_name)
+        "-L. -lgraph_transfer -Wl,-rpath,.".format(cpp_name, extension_name)
     )
 
 
@@ -39,7 +39,7 @@ def compile_python_module(cpp_name, extension_name):
 def build_pybind11(c):
     """Build the pybind11 wrapper library"""
     print_banner("Building PyBind11 Module")
-    compile_python_module("resolver_wrapper.cpp", "resolver_cpp")
+    compile_python_module("graph_transfer_wrapper.cpp", "graph_transfer_cpp")
     print("* Complete")
 
 
@@ -47,7 +47,7 @@ def build_pybind11(c):
 def test_pybind11(c):
     """Run the script to test PyBind11"""
     print_banner("Testing PyBind11 Module")
-    invoke.run("python3 resolver_test.py", pty=True)
+    invoke.run("python3 graph_transfer_test.py", pty=True)
 
 @invoke.task
 def clean(c):

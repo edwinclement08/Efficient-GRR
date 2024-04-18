@@ -1,9 +1,9 @@
 #include <pybind11/pybind11.h>
-#include <resolver.hpp>
+#include <graph_transfer.hpp>
 namespace py = pybind11;
 
-PYBIND11_MODULE(resolver_cpp, m) {
-    m.doc() = "Fast Resolver CPP Plugin"; // Optional module docstring
+PYBIND11_MODULE(graph_transfer_cpp, m) {
+    m.doc() = "Fast graph_transfer CPP Plugin"; // Optional module docstring
 
     py::class_<NetConvert>(m, "NetConvert")
         .def(py::init<const std::string &>())

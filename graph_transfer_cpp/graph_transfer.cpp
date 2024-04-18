@@ -3,7 +3,7 @@
 #include <vector>
 #include <fstream>
 #include <string>
-#include "resolver.hpp"
+#include "graph_transfer.hpp"
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>

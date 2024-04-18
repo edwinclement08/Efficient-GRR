@@ -14,7 +14,7 @@
 extern "C" {
 #endif
 
-EXPORT_SYMBOL float resolver(int int_param, float float_param);
+EXPORT_SYMBOL float graph_transfer(int int_param, float float_param);
 EXPORT_SYMBOL void store_graph();
 using namespace std;
 
