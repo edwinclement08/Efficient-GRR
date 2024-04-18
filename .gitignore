@@ -1,5 +1,10 @@
 __pycache__
 *.pyc
 .vscode/
+.idea
 
 graph/
+venv/
+cmake-build-debug
+
+*.dot
