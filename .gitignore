@@ -8,3 +8,5 @@ venv/
 cmake-build-debug
 
 *.dot
+
+*.bin

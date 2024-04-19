@@ -19,6 +19,7 @@ def build_cppmult(c):
     print_banner("Building C++ Library")
     invoke.run(
         "g++ -O3 -Wall -Werror -shared -std=c++11 -fPIC graph_transfer.cpp "
+        "-lboost_graph -lboost_system -lboost_filesystem -lboost_serialization "
         "-o libgraph_transfer.so "
     )
     print("* Complete")

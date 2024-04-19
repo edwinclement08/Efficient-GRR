@@ -69,6 +69,9 @@ def main(opts):
         graph_folder + "graph_resolution.pickle",
         graph_folder + "nn_resolution.pickle",
     )
+    resolution.workspace.save_workspace_graph_only(
+        graph_folder + "graph_workspace.pickle"
+    )
     # resolution.load_resolution_graph(
     #     graph_folder + "graph_resolution.pickle",
     #     graph_folder + "nn_resolution.pickle",

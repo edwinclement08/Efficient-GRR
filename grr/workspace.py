@@ -50,13 +50,22 @@ class RedundancyWorkspace:
 
     def save_workspace_graph(self, graph_path, nn_path):
         """Save a workspace graph and nn search structure to a pickle file"""
-        pickle.dump(self.graph, open(graph_path, "wb"))
+        self.save_workspace_graph_only(graph_path)
         pickle.dump(self.nn, open(nn_path, "wb"))
 
     def load_workspace_graph(self, graph_path, nn_path):
         """Load a workspace graph and nn search structure from a pickle file"""
-        self.graph = pickle.load(open(graph_path, "rb"))
         self.nn = pickle.load(open(nn_path, "rb"))
+
+        self.load_workspace_graph_only(graph_path)
+
+    def save_workspace_graph_only(self, graph_path):
+        """Save a workspace graph to a pickle file"""
+        pickle.dump(self.graph, open(graph_path, "wb"))
+
+    def load_workspace_graph_only(self, graph_path):
+        """Load a workspace graph from a pickle file"""
+        self.graph = pickle.load(open(graph_path, "rb"))
 
         # Logging
         print("\nWorkspace graph loaded")
