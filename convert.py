@@ -28,25 +28,6 @@ def save_graph(graph, filename):
     # print('edges\t', edges[0])
             
     gt = GraphTransfer(filename)
-
-    print("saving graph to "+filename)
-    try:
-        for edge in edges:
-            ep = EdgeProperties(0, [], False)
-            if len(edge) > 2 and len(edge[2]) >  0: # has data
-                props = edge[2]
-                weight = props['weight'] if 'weight' in props else 0
-                q_list = list(props['q_list']) if 'q_list' in props else []
-                connected = props['connected'] if 'connected' in props else False
-
-                ep = EdgeProperties(weight, q_list, connected)
-                
-            gt.add_edge(edge[0], edge[1], ep)
-    except Exception as e:
-        print("Edge save error")
-        print(edge)
-        print(e)
-
     try:
         for node in nodes:
             if len(node) > 1 and len(node[1]) >  0: # has data
@@ -66,6 +47,25 @@ def save_graph(graph, filename):
     except Exception as e:
         print("Node save error")
         print(node)
+        print(e)
+
+
+    print("saving graph to "+filename)
+    try:
+        for edge in edges:
+            ep = EdgeProperties(0, [], False)
+            if len(edge) > 2 and len(edge[2]) >  0: # has data
+                props = edge[2]
+                weight = props['weight'] if 'weight' in props else 0
+                q_list = list(props['q_list']) if 'q_list' in props else []
+                connected = props['connected'] if 'connected' in props else False
+
+                ep = EdgeProperties(weight, q_list, connected)
+                
+            gt.add_edge(edge[0], edge[1], ep)
+    except Exception as e:
+        print("Edge save error")
+        print(edge)
         print(e)
 
     # gt.show_graph_details()
