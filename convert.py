@@ -43,25 +43,35 @@ def save_graph(graph, filename):
                 
             gt.add_edge(edge[0], edge[1], ep)
     except Exception as e:
+        print("Edge save error")
         print(edge)
         print(e)
 
     try:
         for node in nodes:
-            np = VertexProperties([0.0,0.0,0.0], [])
             if len(node) > 1 and len(node[1]) >  0: # has data
+                props = node[1]
                 point = props['point'] if 'point' in props else [0.0,0.0,0.0]
                 config = props['config'] if 'config' in props else []
+                config = config if config is not None else []
+                point = tuple(point)
+                config = list(config)
+                if(len(point) != 3):
+                    print("Point error, is more than 3 dimensions")
+                    print(point)
                 np = VertexProperties(point, config)
+            else:
+                np = VertexProperties((0.0, 0.0, 0.0), [])
             gt.add_vertex_if_not_exists(node[0], np)
     except Exception as e:
+        print("Node save error")
         print(node)
         print(e)
 
-    gt.show_graph_details()
+    # gt.show_graph_details()
+    # gt.print_all_data()
     gt.save_graph(filename)
     print(f"Graph saved to {filename}")
-
 
 def main(opts):
     """Main function to run the demo"""
@@ -89,9 +99,21 @@ def main(opts):
         graph_folder + "graph_workspace.pickle",
     )
 
+    # import code
+    # import readline
+    # import rlcompleter
+            
+    # vars = globals()
+    # vars.update(locals())
+                                                
+    # readline.set_completer(rlcompleter.Completer(vars).complete)
+    # readline.parse_and_bind("tab: complete")
+    # code.InteractiveConsole(vars).interact()
+
+
     save_graph(resolution.workspace.graph, "workspace.bin")   
     save_graph(resolution.graph, "resolution.bin")
-    save_graph(resolution.solver.graph, "solver_graph.bin")
+    save_graph(resolution.solver.graph, "solver.bin")
 
 if __name__ == "__main__":
     # Default json file
