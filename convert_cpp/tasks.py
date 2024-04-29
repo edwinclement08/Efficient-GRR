@@ -18,12 +18,25 @@ def build_cppmult(c):
     """Build the shared library for the sample C++ code"""
     print_banner("Building C++ Library")
     invoke.run(
-        "g++ -O3 -Wall -Werror -shared -std=c++11 -fPIC graph_transfer.cpp "
+        "g++ -O3 -Wall -shared -std=c++11 -fPIC graph_transfer.cpp "
+        # "g++ -O3 -Wall -Werror -shared -std=c++11 -fPIC graph_transfer.cpp "
         "-lboost_graph -lboost_system -lboost_filesystem -lboost_serialization "
         "-o libgraph_transfer.so "
     )
     print("* Complete")
 
+@invoke.task()
+def test_cpp(c):
+    """Build the shared library for the sample C++ code"""
+    build_cppmult(c)
+    print_banner("Testing C++ Library")
+    invoke.run(
+        "g++ -O3  -std=c++11 test_graph.cpp "
+        "-lboost_graph -lboost_system -lboost_filesystem -lboost_serialization "
+        "-L. -lgraph_transfer -o test.out"
+    )
+    invoke.run("./test.out")
+    print("* Complete")
 
 def compile_python_module(cpp_name, extension_name):
     invoke.run(

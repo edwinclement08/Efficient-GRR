@@ -17,13 +17,13 @@ PYBIND11_MODULE(graph_transfer_cpp, m) {
         .def("load_graph", &GraphTransfer::load_graph_internal)
         ;
    py::class_<VertexProperties>(m, "VertexProperties")
-        .def(py::init([](vector<float> _point, vector<float> config) { 
+        .def(py::init([](vector<double> _point, vector<double> config) { 
             return new VertexProperties(_point , config); }))
         .def_readwrite("point", &VertexProperties::point)
         .def_readwrite("config", &VertexProperties::config)
         ;
     py::class_<EdgeProperties>(m, "EdgeProperties")
-        .def(py::init([](float weight, list<pair<int, int>> q_list, bool connected) { return new EdgeProperties(weight, q_list, connected); }))
+        .def(py::init([](double weight, list<pair<int, int>> q_list, bool connected) { return new EdgeProperties(weight, q_list, connected); }))
         .def_readwrite("weight", &EdgeProperties::weight)
         .def_readwrite("connected", &EdgeProperties::connected)
         .def_readwrite("q_list", &EdgeProperties::q_list)
